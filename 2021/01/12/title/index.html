@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>图书管理系统 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="图书管理系统 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;&#x2F;&#x2F; 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；#include &lt;malloc.h&gt;  struct book {">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图书管理系统">
+<meta property="og:url" content="https://whereareyou233.github.io/2021/01/12/title/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;&#x2F;&#x2F; 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；#include &lt;malloc.h&gt;  struct book {">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-12T03:04:33.000Z">
+<meta property="article:modified_time" content="2021-01-12T03:05:15.604Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(3)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="3">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All "
+           href="/2021/01/12/title/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="图书管理系统">图书管理系统</span>
+            <span class="post-date" title="2021-01-12 11:04:33">2021/01/12</span>
+        </a>
+        
+        <a  class="All "
+           href="/2021/01/09/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="图书管理系统">图书管理系统</span>
+            <span class="post-date" title="2021-01-09 18:15:08">2021/01/09</span>
+        </a>
+        
+        <a  class="All "
+           href="/2021/01/09/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2021-01-09 17:21:18">2021/01/09</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-title" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">图书管理系统</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2021-01-12 11:05:15'>2021-01-12 11:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include &lt;string.h&gt;<br>#include &lt;windows.h&gt;<br>#include &lt;conio.h&gt;// 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；<br>#include &lt;malloc.h&gt; </p>
+<p>struct book { // 图书信息<br>    char num[100],name[100],aut[100],clas[100],pub[100],time[100],price[100];<br>    struct book *next;<br>} str;</p>
+<p>struct land { //登录信息<br>    int qq;<br>    char pw[20];<br>    struct land*next;<br>};</p>
+<p>void cmain(); //图书馆信息菜单<br>void cmenu(); //存书菜单<br>void lmain();//登录菜单</p>
+<p>void search();//搜索图书功能；<br>void gai();//更改图书信息<br>void cun();//存书功能<br>void land();//登陆功能<br>void xinjian();//新建账号功能<br>int match(int,int);//匹配密码是否正确<br>int math();//统计文件中的结构体个数<br>void pai();// 图书排序<br>void look();   //浏览图书;</p>
+<p>void pai() {</p>
+<pre><code>struct book st[100];
+FILE *fp;
+int n=0,j,k,m=0,a,b;
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+
+j=math();
+for( k=0; k&lt;j; k++) &#123;
+    fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,st[k].num,st[k].name,st[k].aut,st[k].clas,st[k].pub,st[k].time,st[k].price);
+&#125;
+for(a=0; a&lt;j-1; a++) &#123;
+    for(b=0; b&lt;j-a-1; b++) &#123;
+        if(strcmp(st[b].num,st[b+1].num)&gt;0) &#123;
+            str=st[b];
+            st[b]=st[b+1];
+            st[b+1]=str;
+        &#125;
+    &#125;
+&#125;
+fclose(fp);
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+for( k=0; k&lt;j; k++) &#123;
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n&quot;,st[k].num,st[k].name,st[k].aut,st[k].clas,st[k].pub,st[k].time,st[k].price);
+
+&#125;
+fclose(fp);
+cmenu();</code></pre>
+<p>}<br>void gai() {  //修改图书信息；<br>    struct book *head;<br>    struct book *p1,*p2;<br>    int n=0,j,k,m=0;<br>    char na[20],a[20],ch;<br>    FILE *fp;</p>
+<pre><code>system (&quot;cls&quot;);
+
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+j=math();
+ch=fgetc(fp);
+if(ch==EOF)
+    printf(&quot;暂无图书信息记录\n按任意键返回\n&quot;);
+else &#123;
+    rewind(fp);
+    j=math();
+    printf(&quot;\n请输入要修改图书的书名或者作者:\n&quot;);//输入修改图书书名
+    scanf(&quot;%s&quot;,na);
+    for( k=0; k&lt;j; k++) &#123;
+
+        if(k==0) &#123;
+            p1=head=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+            p1=head;
+        &#125; else &#123;
+            p2=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            p1-&gt;next=p2;
+            p1=p2;
+        &#125;
+    &#125;
+    p1-&gt;next=NULL;
+    fclose(fp);
+
+    p2=head;
+    for (; p2!=NULL;) &#123;
+
+        if(strcmp(na,p2-&gt;name)==0||strcmp(na,p2-&gt;aut)==0) &#123;
+            if(m==0) &#123;
+                printf(&quot;是否将同书名或作者的信息全部改为一致：（y/n）\n&quot;);
+                getchar();
+                gets(a);
+
+                while(a[0]!=&#39;y&#39;&amp;&amp;a[0]!=&#39;n&#39;) &#123;
+                    printf(&quot;请重新输入(y/n)\n&quot;);
+                    gets(a);
+                &#125;
+            &#125;
+
+            if(a[0]==&#39;n&#39;) &#123;
+                printf(&quot;请输入更改后的信息；\n&quot;);
+                scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            &#125; else &#123;
+                if(m==0) &#123;
+                    printf(&quot;请输入更改后的信息：\n&quot;);
+                    scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+                    p1=p2;
+                &#125; else &#123;
+                    strcpy(p2-&gt;num,p1-&gt;num);//复制登录号
+                    strcpy(p2-&gt;name,p1-&gt;name);//复制书名
+                    strcpy(p2-&gt;aut,p1-&gt;aut);//复制作者名字
+                    strcpy(p2-&gt;clas,p1-&gt;clas);//复制类别
+                    strcpy(p2-&gt;pub,p1-&gt;pub);//复制出版社
+                    strcpy(p2-&gt;time,p1-&gt;time);//复制时间
+                    strcpy(p2-&gt;price,p1-&gt;price);//复制单价
+                &#125;
+            &#125;
+            m++;
+        &#125;
+        p2=p2-&gt;next;
+    &#125;
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+p2=head;
+
+for (; p2!=NULL;) &#123; //把链表内容覆盖到文件
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p2=p2-&gt;next;
+&#125;
+fclose(fp);
+system (&quot;cls&quot;);
+if(m==0) &#123;
+    printf(&quot;无此图书信息\n按任意键返回\n&quot;);
+&#125; else
+    printf(&quot;\n修改成功 \n按任意键返回上一层\n&quot;);
+getch();
+pai();
+return ;</code></pre>
+<p>}</p>
+<p>void cun() {  //存书<br>    //存书功能；</p>
+<pre><code>system (&quot;cls&quot;);
+FILE   *fp;
+struct book *p1,*p2,*head;
+char v,y;
+
+printf(&quot;\n请按以下格式输入图书信息:\n登录号 书名 作者 分类号 出版单位 出版时间 单价&quot;);
+printf(&quot;请输入:\n&quot;);
+p1=head=(struct book*)malloc(sizeof(struct book));
+scanf(&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+
+p1=head;
+printf(&quot;\n请问是否继续存入,（y/n)\n&quot;);
+getchar();
+v=getchar();
+while (v!=&#39;n&#39;&amp;&amp;v!=&#39;y&#39;) &#123;
+    getchar();
+    printf(&quot;\n请重新输入（y/n)\n&quot;);
+    v=getchar();
+&#125;
+while(v!=&#39;n&#39;) &#123;
+    printf(&quot;\n请按以下格式输入图书信息:\n登录号 书名 作者 分类号 出版单位 出版时间 单价\n&quot;);
+    p2=(struct book*)malloc(sizeof(struct book));
+    scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p1-&gt;next=p2;
+    p1=p2;
+
+    getchar();
+    printf(&quot;\n请问是否继续存入,（y/n)\n&quot;);
+    v=getchar();
+&#125;
+p1-&gt;next=NULL;
+
+if ((fp=fopen(&quot;library.txt&quot;,&quot;r&quot;))==NULL) &#123;
+    fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+    fclose(fp);
+&#125;
+fp=fopen(&quot;library.txt&quot;,&quot;a&quot;);
+p2=head;
+
+for (; p2!=NULL;) &#123;
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p2=p2-&gt;next;
+&#125;
+fclose(fp);
+printf(&quot;保存完毕，按任意键返回&quot;);
+
+getch();
+pai();
+return ;</code></pre>
+<p>}</p>
+<p>void dele() {   //删除功能；</p>
+<pre><code>struct book *head;
+struct book *p1,*p2;
+int n=0,j,k,w=0,m=0,x=0;
+
+
+char jjnam[20]= &#123;&#39;\0&#39;&#125;,l[20]= &#123;&#39;\0&#39;&#125;;
+char i;
+FILE *fp;
+
+system (&quot;cls&quot;);
+printf(&quot;\n请输入你要删除的书名:\n&quot;);//输入删除图书书名
+gets(jjnam);
+
+while(strcmp(jjnam,l)==0) &#123;
+    gets(jjnam);
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+j=math();
+for( k=0; k&lt;j; k++) &#123;
+
+    if(k==0) &#123;
+        p1=head=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+        p1=head;
+    &#125; else &#123;
+        p2=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+        p1-&gt;next=p2;
+        p1=p2;
+    &#125;
+&#125;
+p1-&gt;next=NULL;
+fclose(fp);
+
+p1=head;
+for (; p1!=NULL;) &#123;
+    m++;
+    if(strcmp(jjnam,p1-&gt;name)==0) &#123;
+        x++;
+        if(m==1) &#123;
+            head=head-&gt;next;
+            m=0;
+        &#125; else &#123;
+            p2-&gt;next=p1-&gt;next;
+        &#125;
+    &#125;
+    p2=p1;
+    p1=p1-&gt;next;
+
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+p1=head;
+
+for (; p1!=NULL;) &#123; //把链表内容覆盖到文件
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p1-&gt;num,p1-&gt;name,p1-&gt;aut,p1-&gt;clas,p1-&gt;pub,p1-&gt;time,p1-&gt;price);
+    p1=p1-&gt;next;
+&#125;
+fclose(fp);
+system (&quot;cls&quot;);
+if(x==0) &#123;
+    printf(&quot;无此图书信息\n按任意键返回\n&quot;);
+&#125; else
+    printf(&quot;\n删除成功 \n按任意键返回上一层\n&quot;);
+
+getch();
+cmenu();</code></pre>
+<p>}<br>void search() { //搜索图书功能；<br>    struct book *head;<br>    struct book *p1,*p2;<br>    int n=0,j,k,m=0;<br>    char na[20];<br>    FILE *fp;</p>
+<pre><code>system (&quot;cls&quot;);
+printf(&quot;\n请输入你要搜索的书名或者作者:\n&quot;);//输入搜索图书书名
+scanf(&quot;%s&quot;,na);
+fp=fopen(&quot;library.txt&quot;,&quot;a+&quot;);
+j=math();
+
+for( k=0; k&lt;j; k++) &#123;
+
+    if(k==0) &#123;
+        p1=head=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+        p1=head;
+    &#125; else &#123;
+        p2=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+        p1-&gt;next=p2;
+        p1=p2;
+    &#125;
+&#125;
+p1-&gt;next=NULL;
+p2=head;
+for (; p2!=NULL;) &#123;
+    if(strcmp(na,p2-&gt;name)==0||strcmp(na,p2-&gt;aut)==0) &#123;
+
+        if(m==0) &#123;
+            printf(&quot;查询结果:\n\n&quot;);
+            printf(&quot;登录号\t书名\t作者\t分类号\t出版单位\t出版时间\t单价\n&quot;);
+        &#125;
+        printf(&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+
+        m++;
+    &#125;
+    p2=p2-&gt;next;
+&#125;
+if (m==0) &#123;
+    system (&quot;cls&quot;);
+    printf(&quot;\n无符合记录!\n&quot;);
+    getch();
+    cmenu();
+&#125;
+fclose(fp);
+getch();
+cmenu();
+return ;</code></pre>
+<p>}<br>void look() {    //浏览图书;</p>
+<pre><code>struct book *head;
+struct book *p1,*p2;
+int n=0,j,k,m=0;
+char na[20],ch;
+FILE *fp;
+
+system (&quot;cls&quot;);
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+ch=fgetc(fp);
+if(ch==EOF)
+    printf(&quot;暂无图书信息记录\n按任意键返回\n&quot;);
+else &#123;
+    rewind(fp);
+    j=math();
+    for( k=0; k&lt;j; k++) &#123;
+
+        if(k==0) &#123;
+            p1=head=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+            p1=head;
+        &#125; else &#123;
+            p2=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            p1-&gt;next=p2;
+            p1=p2;
+        &#125;
+    &#125;
+    p1-&gt;next=NULL;
+    fclose(fp);
+    p2=head;
+    for (; p2!=NULL;) &#123;
+        if(m==0) &#123;
+            printf(&quot;登录号\t书名\t作者\t分类号\t出版单位\t出版时间\t单价\n&quot;);
+        &#125;
+        printf(&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+
+        p2=p2-&gt;next;
+    &#125;
+
+&#125;
+getch();
+cmenu();
+return ;</code></pre>
+<p>}</p>
+<p>int math() {</p>
+<pre><code>FILE *fp;
+int n;
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);//打开文件
+
+for (n=0; !feof(fp); n++) //逐个读文件
+    fscanf(fp,&quot;%s%s%s%s%s%s%s\n&quot;,str.num,str.name,str.aut,str.clas,str.pub,str.time,str.price);
+
+fclose(fp);//关闭文件
+return (n);//返回个数</code></pre>
+<p>}</p>
+<p>void cmenu() { //图书系统<br>    system (“cls”);<br>    int n;</p>
+<pre><code>printf(&quot;****************************************************&quot;);
+
+printf(&quot;\n 1.增加图书\n\n&quot;);
+
+printf(&quot;\n 2.删除图书\n\n&quot;);
+
+printf(&quot;\n 3.查询图书\n\n&quot;);
+
+printf(&quot;\n 4.图书信息修改\n\n&quot;);
+
+printf(&quot;\n 5.图书浏览\n\n&quot;);
+
+printf(&quot;\n 6.返回上一层\n\n&quot;);
+
+printf(&quot;\n 请按键选择，回车确定\n&quot;);
+
+printf(&quot;***************************************************\n&quot;);
+printf(&quot;请输入你的选择：&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+switch(n) &#123;
+    case 1:
+        cun();
+        break;
+    case 2:
+        dele();
+        break;
+    case 3:
+        search();
+        break;
+    case 4:
+        gai();
+        break;
+    case 5:
+        look();
+        break;
+    case 6:
+        cmain();
+        break;
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void cmain() {  // 图书馆信息菜单<br>    system(“cls”);<br>    int a;<br>    char b;</p>
+<pre><code>printf(&quot;    ********************************************&quot;);
+printf(&quot;\n    *\n    *          1.图书系统\n    *\n    *&quot;);
+printf(&quot;\n    *\n    *          2.退出系统\n    *\n    *&quot;);
+printf(&quot;\n    *\n    *         请按键选择，回车确定\n&quot; );
+printf(&quot;    ********************************************\n&quot;);
+printf(&quot;请输入你的选择：&quot;);
+scanf(&quot;%d&quot;,&amp;a);
+switch(a) &#123;
+
+    case 1:
+        cmenu();
+    case 2:
+        return  ;
+
+&#125;</code></pre>
+<p>}</p>
+<p>int match (int a, char b[20]) {    //账号匹配<br>    FILE *fp;<br>    int n=0,i=0;<br>    int zhanghao;<br>    char password[20];</p>
+<pre><code>if ((fp=fopen(&quot;land.txt&quot;,&quot;r&quot;))==NULL) &#123; //不存在账号信息
+    system (&quot;cls&quot;);
+    printf(&quot;\n 还未存在用户!请新建账户&quot;);
+    getch();
+    system(&quot;cls&quot;);
+    lmain();
+    return 0;
+&#125;
+
+for(; !feof(fp);) &#123;
+    fscanf(fp,&quot;%d %s&quot;,&amp;zhanghao,password);
+    if(a==zhanghao) &#123;
+        if(strcmp(b,password)==0)
+
+            return 1;
+        else &#123;
+
+            return -1;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>}</p>
+<p>void land() {  //登录功能<br>    int qq;<br>    char pw[20];<br>    int i=2,j,k,n,hit;<br>    char b=0;<br>    system(“cls”);</p>
+<pre><code>printf(&quot;\n请输入账号:\n&quot;);
+scanf(&quot;%d&quot;,&amp;qq);
+printf(&quot;\n请输入密码:\n&quot;);
+scanf(&quot;%s&quot;,pw);
+
+i=match(qq,pw);       //进行账号匹配
+
+if(i==1) &#123;
+    printf(&quot;登陆成功!按任意键继续&quot;);
+    getch();
+    cmain();
+&#125; else &#123;
+    char p;
+    if(i==-1) &#123;
+        printf(&quot;密码错误!&quot;);
+        printf(&quot;是否继续尝试(y/n)\n&quot;);
+
+        p=getch();
+        if(p==&#39;y&#39;)
+            land();
+        else &#123;
+            system(&quot;cls&quot;);
+            lmain();
+        &#125;
+    &#125;
+    if(i==0)
+        printf(&quot;不存在此用户&quot;);
+    getch();
+    system(&quot;cls&quot;);
+    lmain();
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void  xinjian() {  //新建账号<br>    system(“cls”);<br>    int qq;<br>    char pw[20],pw1[20];<br>    char hit=0;<br>    FILE *fp;</p>
+<pre><code>if((fp=fopen(&quot;land.txt&quot;,&quot;a&quot;))==NULL) &#123;
+    fp=fopen(&quot;land.txt&quot;,&quot;w&quot;);
+    fclose(fp);
+&#125;
+
+fp=fopen(&quot;land.txt&quot;,&quot;a&quot;);
+printf(&quot;请输入账号：&quot;);
+scanf(&quot;%d&quot;,&amp;qq);
+
+printf(&quot;请为此账号设置密码：&quot;);
+getchar();
+gets(pw);
+
+printf(&quot;请再次确认密码:&quot;);
+gets(pw1);
+if(strcmp(pw,pw1)==0) &#123;
+    fprintf(fp,&quot;%d %s\n&quot;,qq,pw);
+    printf(&quot;密码设置成功，按任意键返回&quot;);
+    fclose(fp);
+    getch();
+    lmain();
+
+&#125; else &#123;
+    printf(&quot;两次密码不一致，请重新建立账号&quot;) ;
+    getch();
+    xinjian();
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void lmain() {//登录菜单<br>    system(“cls”);<br>    printf(“<strong><strong><strong><strong><strong><strong><em>欢迎使用图书管理系统</em></strong></strong></strong></strong></strong></strong>\n”);<br>    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“);<br>    printf(“\n\n\t\t1.登录系统\n\n”);<br>    printf(“\n\n\t\t2.创建账号\n\n”);<br>    printf(“\n\n\t\t3.退出系统\n\n”);<br>    printf(“\n\n\t    请按键选择，回车确定\n”);<br>    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);</p>
+<pre><code>char  n;
+n=getch();
+
+while(n!=&#39;1&#39;&amp;&amp;n!=&#39;2&#39;&amp;&amp;n!=&#39;3&#39;) &#123;
+    printf(&quot;请重新输入选择\n&quot;);
+    n=getch();
+&#125;
+
+switch(n) &#123; //功能函数
+    case &#39;1&#39;:
+        land();//登录函数
+        break;
+    case &#39;2&#39;:
+        xinjian();
+        break;
+    case &#39;3&#39;:
+        system(&quot;cls&quot;);
+        break;
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>int main() { //主函数</p>
+<pre><code>system(&quot;color 30&quot;);
+lmain();
+
+return 0;</code></pre>
+<p>}</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
