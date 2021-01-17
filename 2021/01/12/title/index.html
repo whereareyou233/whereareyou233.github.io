@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>图书管理系统 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;&#x2F;&#x2F; 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；#include &lt;malloc.h&gt;  struct book {">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图书管理系统">
+<meta property="og:url" content="https://whereareyou233.github.io/2021/01/12/title/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include &lt;windows.h&gt;#include &lt;conio.h&gt;&#x2F;&#x2F; 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；#include &lt;malloc.h&gt;  struct book {">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-12T03:04:33.000Z">
+<meta property="article:modified_time" content="2021-01-12T03:05:15.604Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://whereareyou233.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-title" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/12/title/" class="article-date">
+  <time class="dt-published" datetime="2021-01-12T03:04:33.000Z" itemprop="datePublished">2021-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      图书管理系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include &lt;string.h&gt;<br>#include &lt;windows.h&gt;<br>#include &lt;conio.h&gt;// 包含了getch函数，可以直接读入；不需按回车,针对按任意键返回；<br>#include &lt;malloc.h&gt; </p>
+<p>struct book { // 图书信息<br>    char num[100],name[100],aut[100],clas[100],pub[100],time[100],price[100];<br>    struct book *next;<br>} str;</p>
+<p>struct land { //登录信息<br>    int qq;<br>    char pw[20];<br>    struct land*next;<br>};</p>
+<p>void cmain(); //图书馆信息菜单<br>void cmenu(); //存书菜单<br>void lmain();//登录菜单</p>
+<p>void search();//搜索图书功能；<br>void gai();//更改图书信息<br>void cun();//存书功能<br>void land();//登陆功能<br>void xinjian();//新建账号功能<br>int match(int,int);//匹配密码是否正确<br>int math();//统计文件中的结构体个数<br>void pai();// 图书排序<br>void look();   //浏览图书;</p>
+<p>void pai() {</p>
+<pre><code>struct book st[100];
+FILE *fp;
+int n=0,j,k,m=0,a,b;
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+
+j=math();
+for( k=0; k&lt;j; k++) &#123;
+    fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,st[k].num,st[k].name,st[k].aut,st[k].clas,st[k].pub,st[k].time,st[k].price);
+&#125;
+for(a=0; a&lt;j-1; a++) &#123;
+    for(b=0; b&lt;j-a-1; b++) &#123;
+        if(strcmp(st[b].num,st[b+1].num)&gt;0) &#123;
+            str=st[b];
+            st[b]=st[b+1];
+            st[b+1]=str;
+        &#125;
+    &#125;
+&#125;
+fclose(fp);
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+for( k=0; k&lt;j; k++) &#123;
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n&quot;,st[k].num,st[k].name,st[k].aut,st[k].clas,st[k].pub,st[k].time,st[k].price);
+
+&#125;
+fclose(fp);
+cmenu();</code></pre>
+<p>}<br>void gai() {  //修改图书信息；<br>    struct book *head;<br>    struct book *p1,*p2;<br>    int n=0,j,k,m=0;<br>    char na[20],a[20],ch;<br>    FILE *fp;</p>
+<pre><code>system (&quot;cls&quot;);
+
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+j=math();
+ch=fgetc(fp);
+if(ch==EOF)
+    printf(&quot;暂无图书信息记录\n按任意键返回\n&quot;);
+else &#123;
+    rewind(fp);
+    j=math();
+    printf(&quot;\n请输入要修改图书的书名或者作者:\n&quot;);//输入修改图书书名
+    scanf(&quot;%s&quot;,na);
+    for( k=0; k&lt;j; k++) &#123;
+
+        if(k==0) &#123;
+            p1=head=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+            p1=head;
+        &#125; else &#123;
+            p2=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            p1-&gt;next=p2;
+            p1=p2;
+        &#125;
+    &#125;
+    p1-&gt;next=NULL;
+    fclose(fp);
+
+    p2=head;
+    for (; p2!=NULL;) &#123;
+
+        if(strcmp(na,p2-&gt;name)==0||strcmp(na,p2-&gt;aut)==0) &#123;
+            if(m==0) &#123;
+                printf(&quot;是否将同书名或作者的信息全部改为一致：（y/n）\n&quot;);
+                getchar();
+                gets(a);
+
+                while(a[0]!=&#39;y&#39;&amp;&amp;a[0]!=&#39;n&#39;) &#123;
+                    printf(&quot;请重新输入(y/n)\n&quot;);
+                    gets(a);
+                &#125;
+            &#125;
+
+            if(a[0]==&#39;n&#39;) &#123;
+                printf(&quot;请输入更改后的信息；\n&quot;);
+                scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            &#125; else &#123;
+                if(m==0) &#123;
+                    printf(&quot;请输入更改后的信息：\n&quot;);
+                    scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+                    p1=p2;
+                &#125; else &#123;
+                    strcpy(p2-&gt;num,p1-&gt;num);//复制登录号
+                    strcpy(p2-&gt;name,p1-&gt;name);//复制书名
+                    strcpy(p2-&gt;aut,p1-&gt;aut);//复制作者名字
+                    strcpy(p2-&gt;clas,p1-&gt;clas);//复制类别
+                    strcpy(p2-&gt;pub,p1-&gt;pub);//复制出版社
+                    strcpy(p2-&gt;time,p1-&gt;time);//复制时间
+                    strcpy(p2-&gt;price,p1-&gt;price);//复制单价
+                &#125;
+            &#125;
+            m++;
+        &#125;
+        p2=p2-&gt;next;
+    &#125;
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+p2=head;
+
+for (; p2!=NULL;) &#123; //把链表内容覆盖到文件
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p2=p2-&gt;next;
+&#125;
+fclose(fp);
+system (&quot;cls&quot;);
+if(m==0) &#123;
+    printf(&quot;无此图书信息\n按任意键返回\n&quot;);
+&#125; else
+    printf(&quot;\n修改成功 \n按任意键返回上一层\n&quot;);
+getch();
+pai();
+return ;</code></pre>
+<p>}</p>
+<p>void cun() {  //存书<br>    //存书功能；</p>
+<pre><code>system (&quot;cls&quot;);
+FILE   *fp;
+struct book *p1,*p2,*head;
+char v,y;
+
+printf(&quot;\n请按以下格式输入图书信息:\n登录号 书名 作者 分类号 出版单位 出版时间 单价&quot;);
+printf(&quot;请输入:\n&quot;);
+p1=head=(struct book*)malloc(sizeof(struct book));
+scanf(&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+
+p1=head;
+printf(&quot;\n请问是否继续存入,（y/n)\n&quot;);
+getchar();
+v=getchar();
+while (v!=&#39;n&#39;&amp;&amp;v!=&#39;y&#39;) &#123;
+    getchar();
+    printf(&quot;\n请重新输入（y/n)\n&quot;);
+    v=getchar();
+&#125;
+while(v!=&#39;n&#39;) &#123;
+    printf(&quot;\n请按以下格式输入图书信息:\n登录号 书名 作者 分类号 出版单位 出版时间 单价\n&quot;);
+    p2=(struct book*)malloc(sizeof(struct book));
+    scanf(&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p1-&gt;next=p2;
+    p1=p2;
+
+    getchar();
+    printf(&quot;\n请问是否继续存入,（y/n)\n&quot;);
+    v=getchar();
+&#125;
+p1-&gt;next=NULL;
+
+if ((fp=fopen(&quot;library.txt&quot;,&quot;r&quot;))==NULL) &#123;
+    fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+    fclose(fp);
+&#125;
+fp=fopen(&quot;library.txt&quot;,&quot;a&quot;);
+p2=head;
+
+for (; p2!=NULL;) &#123;
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+    p2=p2-&gt;next;
+&#125;
+fclose(fp);
+printf(&quot;保存完毕，按任意键返回&quot;);
+
+getch();
+pai();
+return ;</code></pre>
+<p>}</p>
+<p>void dele() {   //删除功能；</p>
+<pre><code>struct book *head;
+struct book *p1,*p2;
+int n=0,j,k,w=0,m=0,x=0;
+
+
+char jjnam[20]= &#123;&#39;\0&#39;&#125;,l[20]= &#123;&#39;\0&#39;&#125;;
+char i;
+FILE *fp;
+
+system (&quot;cls&quot;);
+printf(&quot;\n请输入你要删除的书名:\n&quot;);//输入删除图书书名
+gets(jjnam);
+
+while(strcmp(jjnam,l)==0) &#123;
+    gets(jjnam);
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+j=math();
+for( k=0; k&lt;j; k++) &#123;
+
+    if(k==0) &#123;
+        p1=head=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+        p1=head;
+    &#125; else &#123;
+        p2=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+        p1-&gt;next=p2;
+        p1=p2;
+    &#125;
+&#125;
+p1-&gt;next=NULL;
+fclose(fp);
+
+p1=head;
+for (; p1!=NULL;) &#123;
+    m++;
+    if(strcmp(jjnam,p1-&gt;name)==0) &#123;
+        x++;
+        if(m==1) &#123;
+            head=head-&gt;next;
+            m=0;
+        &#125; else &#123;
+            p2-&gt;next=p1-&gt;next;
+        &#125;
+    &#125;
+    p2=p1;
+    p1=p1-&gt;next;
+
+&#125;
+
+fp=fopen(&quot;library.txt&quot;,&quot;w&quot;);
+p1=head;
+
+for (; p1!=NULL;) &#123; //把链表内容覆盖到文件
+    fprintf(fp,&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p1-&gt;num,p1-&gt;name,p1-&gt;aut,p1-&gt;clas,p1-&gt;pub,p1-&gt;time,p1-&gt;price);
+    p1=p1-&gt;next;
+&#125;
+fclose(fp);
+system (&quot;cls&quot;);
+if(x==0) &#123;
+    printf(&quot;无此图书信息\n按任意键返回\n&quot;);
+&#125; else
+    printf(&quot;\n删除成功 \n按任意键返回上一层\n&quot;);
+
+getch();
+cmenu();</code></pre>
+<p>}<br>void search() { //搜索图书功能；<br>    struct book *head;<br>    struct book *p1,*p2;<br>    int n=0,j,k,m=0;<br>    char na[20];<br>    FILE *fp;</p>
+<pre><code>system (&quot;cls&quot;);
+printf(&quot;\n请输入你要搜索的书名或者作者:\n&quot;);//输入搜索图书书名
+scanf(&quot;%s&quot;,na);
+fp=fopen(&quot;library.txt&quot;,&quot;a+&quot;);
+j=math();
+
+for( k=0; k&lt;j; k++) &#123;
+
+    if(k==0) &#123;
+        p1=head=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+        p1=head;
+    &#125; else &#123;
+        p2=(struct book*)malloc(sizeof(struct book));
+        fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+        p1-&gt;next=p2;
+        p1=p2;
+    &#125;
+&#125;
+p1-&gt;next=NULL;
+p2=head;
+for (; p2!=NULL;) &#123;
+    if(strcmp(na,p2-&gt;name)==0||strcmp(na,p2-&gt;aut)==0) &#123;
+
+        if(m==0) &#123;
+            printf(&quot;查询结果:\n\n&quot;);
+            printf(&quot;登录号\t书名\t作者\t分类号\t出版单位\t出版时间\t单价\n&quot;);
+        &#125;
+        printf(&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+
+        m++;
+    &#125;
+    p2=p2-&gt;next;
+&#125;
+if (m==0) &#123;
+    system (&quot;cls&quot;);
+    printf(&quot;\n无符合记录!\n&quot;);
+    getch();
+    cmenu();
+&#125;
+fclose(fp);
+getch();
+cmenu();
+return ;</code></pre>
+<p>}<br>void look() {    //浏览图书;</p>
+<pre><code>struct book *head;
+struct book *p1,*p2;
+int n=0,j,k,m=0;
+char na[20],ch;
+FILE *fp;
+
+system (&quot;cls&quot;);
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);
+ch=fgetc(fp);
+if(ch==EOF)
+    printf(&quot;暂无图书信息记录\n按任意键返回\n&quot;);
+else &#123;
+    rewind(fp);
+    j=math();
+    for( k=0; k&lt;j; k++) &#123;
+
+        if(k==0) &#123;
+            p1=head=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,head-&gt;num,head-&gt;name,head-&gt;aut,head-&gt;clas,head-&gt;pub,head-&gt;time,head-&gt;price);
+            p1=head;
+        &#125; else &#123;
+            p2=(struct book*)malloc(sizeof(struct book));
+            fscanf(fp,&quot;%s%s%s%s%s%s%s&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+            p1-&gt;next=p2;
+            p1=p2;
+        &#125;
+    &#125;
+    p1-&gt;next=NULL;
+    fclose(fp);
+    p2=head;
+    for (; p2!=NULL;) &#123;
+        if(m==0) &#123;
+            printf(&quot;登录号\t书名\t作者\t分类号\t出版单位\t出版时间\t单价\n&quot;);
+        &#125;
+        printf(&quot;%s        %s       %s       %s       %s               %s                 %s\n\n&quot;,p2-&gt;num,p2-&gt;name,p2-&gt;aut,p2-&gt;clas,p2-&gt;pub,p2-&gt;time,p2-&gt;price);
+
+        p2=p2-&gt;next;
+    &#125;
+
+&#125;
+getch();
+cmenu();
+return ;</code></pre>
+<p>}</p>
+<p>int math() {</p>
+<pre><code>FILE *fp;
+int n;
+fp=fopen(&quot;library.txt&quot;,&quot;r&quot;);//打开文件
+
+for (n=0; !feof(fp); n++) //逐个读文件
+    fscanf(fp,&quot;%s%s%s%s%s%s%s\n&quot;,str.num,str.name,str.aut,str.clas,str.pub,str.time,str.price);
+
+fclose(fp);//关闭文件
+return (n);//返回个数</code></pre>
+<p>}</p>
+<p>void cmenu() { //图书系统<br>    system (“cls”);<br>    int n;</p>
+<pre><code>printf(&quot;****************************************************&quot;);
+
+printf(&quot;\n 1.增加图书\n\n&quot;);
+
+printf(&quot;\n 2.删除图书\n\n&quot;);
+
+printf(&quot;\n 3.查询图书\n\n&quot;);
+
+printf(&quot;\n 4.图书信息修改\n\n&quot;);
+
+printf(&quot;\n 5.图书浏览\n\n&quot;);
+
+printf(&quot;\n 6.返回上一层\n\n&quot;);
+
+printf(&quot;\n 请按键选择，回车确定\n&quot;);
+
+printf(&quot;***************************************************\n&quot;);
+printf(&quot;请输入你的选择：&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+switch(n) &#123;
+    case 1:
+        cun();
+        break;
+    case 2:
+        dele();
+        break;
+    case 3:
+        search();
+        break;
+    case 4:
+        gai();
+        break;
+    case 5:
+        look();
+        break;
+    case 6:
+        cmain();
+        break;
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void cmain() {  // 图书馆信息菜单<br>    system(“cls”);<br>    int a;<br>    char b;</p>
+<pre><code>printf(&quot;    ********************************************&quot;);
+printf(&quot;\n    *\n    *          1.图书系统\n    *\n    *&quot;);
+printf(&quot;\n    *\n    *          2.退出系统\n    *\n    *&quot;);
+printf(&quot;\n    *\n    *         请按键选择，回车确定\n&quot; );
+printf(&quot;    ********************************************\n&quot;);
+printf(&quot;请输入你的选择：&quot;);
+scanf(&quot;%d&quot;,&amp;a);
+switch(a) &#123;
+
+    case 1:
+        cmenu();
+    case 2:
+        return  ;
+
+&#125;</code></pre>
+<p>}</p>
+<p>int match (int a, char b[20]) {    //账号匹配<br>    FILE *fp;<br>    int n=0,i=0;<br>    int zhanghao;<br>    char password[20];</p>
+<pre><code>if ((fp=fopen(&quot;land.txt&quot;,&quot;r&quot;))==NULL) &#123; //不存在账号信息
+    system (&quot;cls&quot;);
+    printf(&quot;\n 还未存在用户!请新建账户&quot;);
+    getch();
+    system(&quot;cls&quot;);
+    lmain();
+    return 0;
+&#125;
+
+for(; !feof(fp);) &#123;
+    fscanf(fp,&quot;%d %s&quot;,&amp;zhanghao,password);
+    if(a==zhanghao) &#123;
+        if(strcmp(b,password)==0)
+
+            return 1;
+        else &#123;
+
+            return -1;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>}</p>
+<p>void land() {  //登录功能<br>    int qq;<br>    char pw[20];<br>    int i=2,j,k,n,hit;<br>    char b=0;<br>    system(“cls”);</p>
+<pre><code>printf(&quot;\n请输入账号:\n&quot;);
+scanf(&quot;%d&quot;,&amp;qq);
+printf(&quot;\n请输入密码:\n&quot;);
+scanf(&quot;%s&quot;,pw);
+
+i=match(qq,pw);       //进行账号匹配
+
+if(i==1) &#123;
+    printf(&quot;登陆成功!按任意键继续&quot;);
+    getch();
+    cmain();
+&#125; else &#123;
+    char p;
+    if(i==-1) &#123;
+        printf(&quot;密码错误!&quot;);
+        printf(&quot;是否继续尝试(y/n)\n&quot;);
+
+        p=getch();
+        if(p==&#39;y&#39;)
+            land();
+        else &#123;
+            system(&quot;cls&quot;);
+            lmain();
+        &#125;
+    &#125;
+    if(i==0)
+        printf(&quot;不存在此用户&quot;);
+    getch();
+    system(&quot;cls&quot;);
+    lmain();
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void  xinjian() {  //新建账号<br>    system(“cls”);<br>    int qq;<br>    char pw[20],pw1[20];<br>    char hit=0;<br>    FILE *fp;</p>
+<pre><code>if((fp=fopen(&quot;land.txt&quot;,&quot;a&quot;))==NULL) &#123;
+    fp=fopen(&quot;land.txt&quot;,&quot;w&quot;);
+    fclose(fp);
+&#125;
+
+fp=fopen(&quot;land.txt&quot;,&quot;a&quot;);
+printf(&quot;请输入账号：&quot;);
+scanf(&quot;%d&quot;,&amp;qq);
+
+printf(&quot;请为此账号设置密码：&quot;);
+getchar();
+gets(pw);
+
+printf(&quot;请再次确认密码:&quot;);
+gets(pw1);
+if(strcmp(pw,pw1)==0) &#123;
+    fprintf(fp,&quot;%d %s\n&quot;,qq,pw);
+    printf(&quot;密码设置成功，按任意键返回&quot;);
+    fclose(fp);
+    getch();
+    lmain();
+
+&#125; else &#123;
+    printf(&quot;两次密码不一致，请重新建立账号&quot;) ;
+    getch();
+    xinjian();
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>void lmain() {//登录菜单<br>    system(“cls”);<br>    printf(“<strong><strong><strong><strong><strong><strong><em>欢迎使用图书管理系统</em></strong></strong></strong></strong></strong></strong>\n”);<br>    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“);<br>    printf(“\n\n\t\t1.登录系统\n\n”);<br>    printf(“\n\n\t\t2.创建账号\n\n”);<br>    printf(“\n\n\t\t3.退出系统\n\n”);<br>    printf(“\n\n\t    请按键选择，回车确定\n”);<br>    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);</p>
+<pre><code>char  n;
+n=getch();
+
+while(n!=&#39;1&#39;&amp;&amp;n!=&#39;2&#39;&amp;&amp;n!=&#39;3&#39;) &#123;
+    printf(&quot;请重新输入选择\n&quot;);
+    n=getch();
+&#125;
+
+switch(n) &#123; //功能函数
+    case &#39;1&#39;:
+        land();//登录函数
+        break;
+    case &#39;2&#39;:
+        xinjian();
+        break;
+    case &#39;3&#39;:
+        system(&quot;cls&quot;);
+        break;
+&#125;
+return ;</code></pre>
+<p>}</p>
+<p>int main() { //主函数</p>
+<pre><code>system(&quot;color 30&quot;);
+lmain();
+
+return 0;</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://whereareyou233.github.io/2021/01/12/title/" data-id="ckk179g6n0000n0vkaoua5eog" data-title="图书管理系统" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/09/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">图书管理系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/12/title/">图书管理系统</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/09/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">图书管理系统</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/09/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
